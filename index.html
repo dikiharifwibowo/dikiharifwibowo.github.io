@@ -8,10 +8,11 @@
     <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
     <link rel="icon" type="image/png" sizes="32x32" href="favicon-16x16.png">
     <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 </head>
 <body>
 <div class="min-h-screen py-10 px-3 sm:px-5 bg-gray-100">
-    <div class="w-full">
+    <div class="w-full" data-aos="fade-up" data-aos-duration="1000">
         <div class="flex flex-col justify-center max-w-xs mx-auto bg-white shadow-xl rounded-xl p-5">
             <div class=""><img class="w-32 mx-auto shadow-xl rounded-full"
                                src="diki.png" alt="Profile face"></div>
@@ -47,7 +48,7 @@
         </div>
     </div>
 
-    <div class="max-w-4xl mx-auto mt-16">
+    <div class="max-w-4xl mx-auto mt-16" data-aos="fade-up" data-aos-duration="1000">
         <p class="font-bold italic text-base text-left md:text-center text-gray-600 leading-relaxed mt-4 pb-4">
             Hidup seperti "kran", mengumpulkan untuk membagi.
         </p>
@@ -90,12 +91,12 @@
         </div>
     </div>
 
-    <div class="max-w-4xl mx-auto mt-16">
+    <div class="max-w-4xl mx-auto mt-16" data-aos="fade-up" data-aos-duration="1000">
         <p class="text-2xl md:text-4xl mb-4 font-bold text-center">Education</p>
         <div class="flex flex-col p-8 bg-white shadow-md hover:shodow-lg rounded-2xl">
             <div class="flex items-center justify-between mb-3">
                 <div class="flex items-center">
-                    <img src="qiscus.png" class="w-16 h-16" alt="">
+                    <img src="ugm.png" class="w-16 h-16" alt="">
                     <div class="flex flex-col ml-3">
                         <div class="font-medium leading-none">Gadjah Mada University</div>
                         <p class="text-sm text-gray-600 leading-none mt-1">Magister of Computer Science
@@ -107,9 +108,9 @@
             </div>
             <div class="flex items-center justify-between mb-3">
                 <div class="flex items-center">
-                    <img src="javan.png" class="w-16 h-16" alt="">
+                    <img src="amikom.png" class="w-16 h-16" alt="">
                     <div class="flex flex-col ml-3">
-                        <div class="font-medium leading-none">University of Amikom Yogyakart</div>
+                        <div class="font-medium leading-none">University of Amikom Yogyakarta</div>
                         <p class="text-sm text-gray-600 leading-none mt-1">Bachelor of Computer Science
                         </p>
                     </div>
@@ -119,5 +120,9 @@
         </div>
     </div>
 </div>
+<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script>
+    AOS.init();
+</script>
 </body>
 </html>
