@@ -8,14 +8,18 @@
     <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
     <link rel="icon" type="image/png" sizes="32x32" href="favicon-16x16.png">
     <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
-    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <script src="https://unpkg.com/vue@3"></script>
 </head>
 <body>
-<div class="min-h-screen py-10 px-3 sm:px-5 bg-gray-100">
-    <div class="w-full" data-aos="fade-up" data-aos-duration="1000">
+<div class="min-h-screen py-10 px-3 sm:px-5 bg-gray-100" id="app">
+    <div class="w-full">
         <div class="flex flex-col justify-center max-w-xs mx-auto bg-white shadow-xl rounded-xl p-5">
-            <div class=""><img class="w-32 mx-auto shadow-xl rounded-full"
-                               src="diki.png" alt="Profile face"></div>
+            <div class="">
+                <img 
+                    class="w-32 mx-auto shadow-xl rounded-full"
+                    src="diki.png" alt="Profile face"
+                >
+            </div>
             <div class="text-center mt-5">
                 <p class="text-xl sm:text-2xl font-semibold text-gray-900">Dikih Arif Wibowo</p>
                 <p class="text-xs sm:text-base text-gray-600 pt-2 pb-4 px-5 w-auto inline-block border-b-2">
@@ -48,147 +52,229 @@
         </div>
     </div>
 
-    <div class="max-w-4xl mx-auto mt-16" data-aos="fade-up" data-aos-duration="1000">
-        <p class="font-bold italic text-base text-left md:text-center text-gray-600 leading-relaxed mt-4 pb-4">
+    <div class="max-w-4xl mx-auto">
+        <p class="font-bold italic text-base text-center text-gray-600 leading-relaxed mt-4 mb-8">
             Hidup seperti "kran", mengumpulkan untuk membagi.
         </p>
-        <p class="text-2xl md:text-4xl mb-4 font-bold text-center">Experience</p>
-        <div class="flex flex-col p-8 bg-white shadow-md hover:shodow-lg rounded-2xl">
-            <div class="flex items-center justify-between mb-3">
-                <div class="flex items-center">
-                    <img src="dana.png" class="w-16 h-16" alt="">
-                    <div class="flex flex-col ml-3">
-                        <div class="font-medium leading-none">Frontend Engineer at DANA</div>
-                        <p class="text-sm text-gray-600 leading-none mt-1">February 2022 - Present
-                        </p>
+
+        <div class="border-gray-200 bg-white rounded-md dark:border-gray-700 shadow-md hover:shodow-md">
+            <ul class="flex justify-center flex-wrap border-b -mb-px text-sm font-medium text-center text-gray-500">
+                <li class="mr-2"
+                    @click="changeTab('experiences')"
+                >
+                    <a href="#" 
+                        :class="activeTab === 'experiences' ? 'text-blue-600 border-blue-600 active' : 'border-transparent hover:text-gray-600 hover:border-gray-300'"
+                        class="inline-flex p-4 rounded-t-lg border-b-2 group">
+                        <svg :class="activeTab === 'experiences' ? 'text-blue-600 dark:text-blue-500' : 'text-gray-400 group-hover:text-gray-500'" class="mr-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                        Experiences
+                    </a>
+                </li>
+                <li class="mr-2"
+                    @click="changeTab('educations')"
+                >
+                    <a href="#" 
+                        :class="activeTab === 'educations' ? 'text-blue-600 border-blue-600 active' : 'border-transparent hover:text-gray-600 hover:border-gray-300'"
+                        class="inline-flex p-4 rounded-t-lg border-b-2 group">
+                        <svg :class="activeTab === 'educations' ? 'text-blue-600 dark:text-blue-500' : 'text-gray-400 group-hover:text-gray-500'" class="mr-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 14l9-5-9-5-9 5 9 5z"></path><path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222"></path></svg>
+                        Educations
+                    </a>
+                </li>
+                <li class="mr-2"
+                    @click="changeTab('certificates')"
+                >
+                    <a href="#" 
+                        :class="activeTab === 'certificates' ? 'text-blue-600 border-blue-600 active' : 'border-transparent hover:text-gray-600 hover:border-gray-300'"
+                        class="inline-flex p-4 rounded-t-lg border-b-2 group">
+                        <svg :class="activeTab === 'certificates' ? 'text-blue-600 dark:text-blue-500' : 'text-gray-400 group-hover:text-gray-500'" class="mr-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"></path></svg>
+                        Certificates & Licenses
+                    </a>
+                </li>
+                <li class="mr-2"
+                    @click="changeTab('blogs')"
+                >
+                    <a href="#" 
+                        :class="activeTab === 'blogs' ? 'text-blue-600 border-blue-600 active' : 'border-transparent hover:text-gray-600 hover:border-gray-300'"
+                        class="inline-flex p-4 rounded-t-lg border-b-2 group">
+                        <svg :class="activeTab === 'blogs' ? 'text-blue-600 dark:text-blue-500' : 'text-gray-400 group-hover:text-gray-500'" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4"></path></svg>
+                        Blogs
+                    </a>
+                </li>
+                <li class="mr-2">
+                    <a href="#" class="inline-flex p-4 rounded-t-lg border-b-2 border-transparent hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300 group">
+                        <svg class="mr-2 w-5 h-5 text-gray-400 group-hover:text-gray-500 dark:text-gray-500 dark:group-hover:text-gray-300" class="mr-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
+                        Books
+                    </a>
+                </li>
+            </ul>
+
+            <div class="flex flex-col p-8" v-if="activeTab === 'experiences'">
+                <div class="flex items-center justify-between mb-3">
+                    <div class="flex items-center">
+                        <img src="dana.png" class="w-16 h-16" alt="">
+                        <div class="flex flex-col ml-3">
+                            <div class="font-medium leading-none">Frontend Engineer at DANA</div>
+                            <p class="text-sm text-gray-600 leading-none mt-1">February 2022 - Present
+                            </p>
+                        </div>
                     </div>
+                    <a href="http://dana.id" target="_blank" class="flex-no-shrink bg-white px-5 ml-4 py-2 text-sm shadow-sm font-medium tracking-wider
+                     border-2 border-blue-400 text-blue-400 rounded-full hover:text-white hover:bg-blue-500">Visit</a>
                 </div>
-                <a href="http://dana.id" target="_blank" class="flex-no-shrink bg-white px-5 ml-4 py-2 text-sm shadow-sm font-medium tracking-wider
-                 border-2 border-blue-400 text-blue-400 rounded-full hover:text-white hover:bg-blue-500">Visit</a>
+                <div class="flex items-center justify-between mb-3">
+                    <div class="flex items-center">
+                        <img src="qiscus.png" class="w-16 h-16" alt="">
+                        <div class="flex flex-col ml-3">
+                            <div class="font-medium leading-none">Frontend Engineer at Qiscus</div>
+                            <p class="text-sm text-gray-600 leading-none mt-1">May 2021 - February 2022
+                            </p>
+                        </div>
+                    </div>
+                    <a href="http://qiscus.com" target="_blank" class="flex-no-shrink bg-white px-5 ml-4 py-2 text-sm shadow-sm font-medium tracking-wider
+                     border-2 border-blue-400 text-blue-400 rounded-full hover:text-white hover:bg-blue-500">Visit</a>
+                </div>
+                <div class="flex items-center justify-between mb-3">
+                    <div class="flex items-center">
+                        <img src="javan.png" class="w-16 h-16" alt="">
+                        <div class="flex flex-col ml-3">
+                            <div class="font-medium leading-none">Frontend Engineer at Javan Cipta Solusi</div>
+                            <p class="text-sm text-gray-600 leading-none mt-1">Jul 2019 - May 2021
+                            </p>
+                        </div>
+                    </div>
+                    <a href="http://javan.co.id" target="_blank" class="flex-no-shrink bg-white px-5 ml-4 py-2 text-sm shadow-sm font-medium tracking-wider border-2 border-blue-400 text-blue-400 rounded-full hover:text-white hover:bg-blue-500">visit</a>
+                </div>
+                <div class="flex items-center justify-between mb-3">
+                    <div class="flex items-center">
+                        <img src="jakpat.png" class="w-16 h-16" alt="">
+                        <div class="flex flex-col ml-3">
+                            <div class="font-medium leading-none">Frontend Engineer at Jakpat</div>
+                            <p class="text-sm text-gray-600 leading-none mt-1">Mar 2018 - May 2018
+                            </p>
+                        </div>
+                    </div>
+                    <a href="http://jakpat.net" target="_blank" class="flex-no-shrink bg-white px-5 ml-4 py-2 text-sm shadow-sm font-medium tracking-wider border-2 border-blue-400 text-blue-400 rounded-full hover:text-white hover:bg-blue-500">visit</a>
+                </div>
             </div>
-            <div class="flex items-center justify-between mb-3">
-                <div class="flex items-center">
-                    <img src="qiscus.png" class="w-16 h-16" alt="">
-                    <div class="flex flex-col ml-3">
-                        <div class="font-medium leading-none">Frontend Engineer at Qiscus</div>
-                        <p class="text-sm text-gray-600 leading-none mt-1">May 2021 - February 2022
-                        </p>
+
+            <div class="flex flex-col p-8" v-if="activeTab === 'educations'">
+                <div class="flex items-center justify-between mb-3">
+                    <div class="flex items-center">
+                        <img src="ugm.png" class="w-16 h-16" alt="">
+                        <div class="flex flex-col ml-3">
+                            <div class="font-medium leading-none">Gadjah Mada University</div>
+                            <p class="text-sm text-gray-600 leading-none mt-1">Magister of Computer Science
+                            </p>
+                        </div>
                     </div>
+                    <a href="http://ugm.ac.id" target="_blank" class="flex-no-shrink bg-white px-5 ml-4 py-2 text-sm shadow-sm font-medium tracking-wider
+                     border-2 border-blue-400 text-blue-400 rounded-full hover:text-white hover:bg-blue-500">Visit</a>
                 </div>
-                <a href="http://qiscus.com" target="_blank" class="flex-no-shrink bg-white px-5 ml-4 py-2 text-sm shadow-sm font-medium tracking-wider
-                 border-2 border-blue-400 text-blue-400 rounded-full hover:text-white hover:bg-blue-500">Visit</a>
+                <div class="flex items-center justify-between mb-3">
+                    <div class="flex items-center">
+                        <img src="amikom.png" class="w-16 h-16" alt="">
+                        <div class="flex flex-col ml-3">
+                            <div class="font-medium leading-none">University of Amikom Yogyakarta</div>
+                            <p class="text-sm text-gray-600 leading-none mt-1">Bachelor of Computer Science
+                            </p>
+                        </div>
+                    </div>
+                    <a href="http://amikom.ac.id" target="_blank" class="flex-no-shrink bg-white px-5 ml-4 py-2 text-sm shadow-sm font-medium tracking-wider border-2 border-blue-400 text-blue-400 rounded-full hover:text-white hover:bg-blue-500">visit</a>
+                </div>
             </div>
-            <div class="flex items-center justify-between mb-3">
-                <div class="flex items-center">
-                    <img src="javan.png" class="w-16 h-16" alt="">
-                    <div class="flex flex-col ml-3">
-                        <div class="font-medium leading-none">Frontend Engineer at Javan Cipta Solusi</div>
-                        <p class="text-sm text-gray-600 leading-none mt-1">Jul 2019 - May 2021
-                        </p>
+
+            <div class="flex flex-col p-8" v-if="activeTab === 'certificates'">
+                <div class="flex items-center justify-between mb-3">
+                    <div class="flex items-center">
+                        <img src="sololearn.jfif" class="w-16 h-16" alt="">
+                        <div class="flex flex-col ml-3">
+                            <div class="font-medium leading-none">React Redux</div>
+                            <p class="text-sm text-gray-600 leading-none mt-1">Sololearn</p>
+                            <p class="text-sm text-gray-600 leading-none mt-1 italic">Issued Nov 2021 : No Expiration Date</p>
+                        </div>
                     </div>
+                    <a href="https://www.sololearn.com/Certificate/1097-23986157/jpg" target="_blank" class="flex-no-shrink bg-white px-5 ml-4 py-2 text-sm shadow-sm font-medium tracking-wider
+                     border-2 border-blue-400 text-blue-400 rounded-full hover:text-white hover:bg-blue-500">See Credential</a>
                 </div>
-                <a href="http://javan.co.id" target="_blank" class="flex-no-shrink bg-white px-5 ml-4 py-2 text-sm shadow-sm font-medium tracking-wider border-2 border-blue-400 text-blue-400 rounded-full hover:text-white hover:bg-blue-500">visit</a>
+                <div class="flex items-center justify-between mb-3">
+                    <div class="flex items-center">
+                        <img src="sololearn.jfif" class="w-16 h-16" alt="">
+                        <div class="flex flex-col ml-3">
+                            <div class="font-medium leading-none">JavaScript</div>
+                            <p class="text-sm text-gray-600 leading-none mt-1">Sololearn</p>
+                            <p class="text-sm text-gray-600 leading-none mt-1 italic">Issued Nov 2021 : No Expiration Date</p>
+                        </div>
+                    </div>
+                    <a href="https://www.sololearn.com/certificates/course/en/23986157/1024/landscape/png" target="_blank" class="flex-no-shrink bg-white px-5 ml-4 py-2 text-sm shadow-sm font-medium tracking-wider
+                     border-2 border-blue-400 text-blue-400 rounded-full hover:text-white hover:bg-blue-500">See Credential</a>
+                </div>
+                <div class="flex items-center justify-between mb-3">
+                    <div class="flex items-center">
+                        <img src="hackerrank.jfif" class="w-16 h-16" alt="">
+                        <div class="flex flex-col ml-3">
+                            <div class="font-medium leading-none">JavaScript Basic</div>
+                            <p class="text-sm text-gray-600 leading-none mt-1">HackerRank</p>
+                            <p class="text-sm text-gray-600 leading-none mt-1 italic">Issued Oct 2021 : No Expiration Date</p>
+                        </div>
+                    </div>
+                    <a href="https://www.hackerrank.com/certificates/30e7d2d52fff" target="_blank" class="flex-no-shrink bg-white px-5 ml-4 py-2 text-sm shadow-sm font-medium tracking-wider
+                     border-2 border-blue-400 text-blue-400 rounded-full hover:text-white hover:bg-blue-500">See Credential</a>
+                </div>
+                <div class="flex items-center justify-between mb-3">
+                    <div class="flex items-center">
+                        <img src="microsoft.jfif" class="w-16 h-16" alt="">
+                        <div class="flex flex-col ml-3">
+                            <div class="font-medium leading-none">HTML5 Application Development Fundamentals</div>
+                            <p class="text-sm text-gray-600 leading-none mt-1">Microsoft</p>
+                            <p class="text-sm text-gray-600 leading-none mt-1 italic">Issued Nov 2016 : No Expiration Date</p>
+                        </div>
+                    </div>
+                    <a href="https://i.imgur.com/rW4lrP1.jpg" target="_blank" class="flex-no-shrink bg-white px-5 ml-4 py-2 text-sm shadow-sm font-medium tracking-wider
+                     border-2 border-blue-400 text-blue-400 rounded-full hover:text-white hover:bg-blue-500">See Credential</a>
+                </div>
             </div>
-            <div class="flex items-center justify-between mb-3">
-                <div class="flex items-center">
-                    <img src="jakpat.png" class="w-16 h-16" alt="">
-                    <div class="flex flex-col ml-3">
-                        <div class="font-medium leading-none">Frontend Engineer at Jakpat</div>
-                        <p class="text-sm text-gray-600 leading-none mt-1">Mar 2018 - May 2018
-                        </p>
-                    </div>
+
+            <div class="flex flex-col p-8" v-if="activeTab === 'blogs'">
+                <div class="font-semibold text-xl mb-6 text-blue-600">
+                    Top 5 Articles
                 </div>
-                <a href="http://jakpat.net" target="_blank" class="flex-no-shrink bg-white px-5 ml-4 py-2 text-sm shadow-sm font-medium tracking-wider border-2 border-blue-400 text-blue-400 rounded-full hover:text-white hover:bg-blue-500">visit</a>
+                <a href="https://medium.com/dana-engineering/complete-guide-vue-3-composition-api-284e19ee0831" class="rounded-sm grid grid-cols-12 bg-white shadow p-3 gap-2 items-center hover:shadow-lg transition delay-150 duration-300 ease-in-out hover:scale-105 transform" href="#">
+    
+                    <!-- Icon -->
+                    <div class="col-span-12 md:col-span-1">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="#2563eb">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7v8a2 2 0 002 2h6M8 7V5a2 2 0 012-2h4.586a1 1 0 01.707.293l4.414 4.414a1 1 0 01.293.707V15a2 2 0 01-2 2h-2M8 7H6a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2v-2" />
+                      </svg>
+                    </div>
+                    
+                    <!-- Title -->
+                    <div class="col-span-11 xl:-ml-5">
+                      <p class="text-blue-600 font-semibold"> Complete Guide Vue 3 — Composition API </p>
+                    </div>
+                    
+                    <!-- Description -->
+                    <div class="md:col-start-2 col-span-11 xl:-ml-5">
+                      <p class="text-sm text-gray-800 font-light"> learn the composition API of its features and differences with the options API </p>
+                    </div>
+                    
+                </a>
             </div>
         </div>
     </div>
 
-    <div class="max-w-4xl mx-auto mt-16" data-aos="fade-up" data-aos-duration="1000">
-        <p class="text-2xl md:text-4xl mb-4 font-bold text-center">Education</p>
-        <div class="flex flex-col p-8 bg-white shadow-md hover:shodow-lg rounded-2xl">
-            <div class="flex items-center justify-between mb-3">
-                <div class="flex items-center">
-                    <img src="ugm.png" class="w-16 h-16" alt="">
-                    <div class="flex flex-col ml-3">
-                        <div class="font-medium leading-none">Gadjah Mada University</div>
-                        <p class="text-sm text-gray-600 leading-none mt-1">Magister of Computer Science
-                        </p>
-                    </div>
-                </div>
-                <a href="http://ugm.ac.id" target="_blank" class="flex-no-shrink bg-white px-5 ml-4 py-2 text-sm shadow-sm font-medium tracking-wider
-                 border-2 border-blue-400 text-blue-400 rounded-full hover:text-white hover:bg-blue-500">Visit</a>
-            </div>
-            <div class="flex items-center justify-between mb-3">
-                <div class="flex items-center">
-                    <img src="amikom.png" class="w-16 h-16" alt="">
-                    <div class="flex flex-col ml-3">
-                        <div class="font-medium leading-none">University of Amikom Yogyakarta</div>
-                        <p class="text-sm text-gray-600 leading-none mt-1">Bachelor of Computer Science
-                        </p>
-                    </div>
-                </div>
-                <a href="http://amikom.ac.id" target="_blank" class="flex-no-shrink bg-white px-5 ml-4 py-2 text-sm shadow-sm font-medium tracking-wider border-2 border-blue-400 text-blue-400 rounded-full hover:text-white hover:bg-blue-500">visit</a>
-            </div>
-        </div>
-    </div>
-
-    <div class="max-w-4xl mx-auto mt-16" data-aos="fade-up" data-aos-duration="1000">
-        <p class="text-2xl md:text-4xl mb-4 font-bold text-center">Licenses & Certifications</p>
-        <div class="flex flex-col p-8 bg-white shadow-md hover:shodow-lg rounded-2xl">
-            <div class="flex items-center justify-between mb-3">
-                <div class="flex items-center">
-                    <img src="sololearn.jfif" class="w-16 h-16" alt="">
-                    <div class="flex flex-col ml-3">
-                        <div class="font-medium leading-none">React Redux</div>
-                        <p class="text-sm text-gray-600 leading-none mt-1">Sololearn</p>
-                        <p class="text-sm text-gray-600 leading-none mt-1 italic">Issued Nov 2021 : No Expiration Date</p>
-                    </div>
-                </div>
-                <a href="https://www.sololearn.com/Certificate/1097-23986157/jpg" target="_blank" class="flex-no-shrink bg-white px-5 ml-4 py-2 text-sm shadow-sm font-medium tracking-wider
-                 border-2 border-blue-400 text-blue-400 rounded-full hover:text-white hover:bg-blue-500">See Credential</a>
-            </div>
-            <div class="flex items-center justify-between mb-3">
-                <div class="flex items-center">
-                    <img src="sololearn.jfif" class="w-16 h-16" alt="">
-                    <div class="flex flex-col ml-3">
-                        <div class="font-medium leading-none">JavaScript</div>
-                        <p class="text-sm text-gray-600 leading-none mt-1">Sololearn</p>
-                        <p class="text-sm text-gray-600 leading-none mt-1 italic">Issued Nov 2021 : No Expiration Date</p>
-                    </div>
-                </div>
-                <a href="https://www.sololearn.com/certificates/course/en/23986157/1024/landscape/png" target="_blank" class="flex-no-shrink bg-white px-5 ml-4 py-2 text-sm shadow-sm font-medium tracking-wider
-                 border-2 border-blue-400 text-blue-400 rounded-full hover:text-white hover:bg-blue-500">See Credential</a>
-            </div>
-            <div class="flex items-center justify-between mb-3">
-                <div class="flex items-center">
-                    <img src="hackerrank.jfif" class="w-16 h-16" alt="">
-                    <div class="flex flex-col ml-3">
-                        <div class="font-medium leading-none">JavaScript Basic</div>
-                        <p class="text-sm text-gray-600 leading-none mt-1">HackerRank</p>
-                        <p class="text-sm text-gray-600 leading-none mt-1 italic">Issued Oct 2021 : No Expiration Date</p>
-                    </div>
-                </div>
-                <a href="https://www.hackerrank.com/certificates/30e7d2d52fff" target="_blank" class="flex-no-shrink bg-white px-5 ml-4 py-2 text-sm shadow-sm font-medium tracking-wider
-                 border-2 border-blue-400 text-blue-400 rounded-full hover:text-white hover:bg-blue-500">See Credential</a>
-            </div>
-            <div class="flex items-center justify-between mb-3">
-                <div class="flex items-center">
-                    <img src="microsoft.jfif" class="w-16 h-16" alt="">
-                    <div class="flex flex-col ml-3">
-                        <div class="font-medium leading-none">HTML5 Application Development Fundamentals</div>
-                        <p class="text-sm text-gray-600 leading-none mt-1">Microsoft</p>
-                        <p class="text-sm text-gray-600 leading-none mt-1 italic">Issued Nov 2016 : No Expiration Date</p>
-                    </div>
-                </div>
-                <a href="https://i.imgur.com/rW4lrP1.jpg" target="_blank" class="flex-no-shrink bg-white px-5 ml-4 py-2 text-sm shadow-sm font-medium tracking-wider
-                 border-2 border-blue-400 text-blue-400 rounded-full hover:text-white hover:bg-blue-500">See Credential</a>
-            </div>
-        </div>
-    </div>
 </div>
-<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
 <script>
-    AOS.init();
-</script>
+    Vue.createApp({
+      data() {
+        return {
+          activeTab: 'experiences',
+        }
+      },
+      methods: {
+        changeTab(tab) {
+          this.activeTab = tab
+        }
+      }
+    }).mount('#app')
+  </script>
 </body>
 </html>
